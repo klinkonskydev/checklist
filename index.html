@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Check - List</title>
+</head>
+<body>
+    
+
+    <header>
+        <div class="navegation" id="nav-open">
+            <div class="navegation-line1"></div>
+            <div class="navegation-line2"></div>
+            <div class="navegation-line3"></div>
+        </div>
+
+        <div class="nav" id="navbar">
+            <div class="show">
+
+                <div class="profile modes">
+                    
+                    <img src="./assets/user.svg" 
+                    alt="Profile Photo" 
+                    width="50"
+                    height="50"/>
+                    
+                    <h3>Profile</h3>
+                    
+                    <hr>
+                    
+                    <div class="list-menu">
+                        <ul>
+                            <li class="list">
+                                <a href="#" class="link" >My Lists</a>
+                            </li>
+                            
+                            <li class="list">
+                                <a href="#" class="link" id="make-list">Create List</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <img src="https://img.icons8.com/nolan/64/bright-moon.png" alt="darkmode"
+                        width="70"
+                        height="70"
+                        class="change-to-dark"
+                        id="darkmode"
+                        />
+
+                        <hr>
+                    </div>
+
+                    <div>
+                        <label for="checkbox" class="label-checkbox">
+                            Enable Animation?
+                            <input type="checkbox" class="checkbox" id="checkbox">
+                            <span class="check"></span>
+                        </label>
+                    </div> 
+                    
+
+                </div>
+
+                <div>
+                    <ul>
+                        <li class="list">
+                            <a href="#" class="link">Configuration</a>
+                        </li>
+                        
+                        <li class="list">
+                            <a href="#" class="link">How to use</a>
+                        </li>
+                        
+                        <li class="list">
+                            <a href="#" class="link">Suport</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
+    <div class="modal" id="modal">
+        <section class="elements">
+
+            <input type="text" placeholder="TITLE" class="title-input" id="text">
+            <input type="date" name="" class="date-input" id="date-input">
+            <textarea name="" cols="30" rows="10" class="textarea" id="description"></textarea>
+
+            <div class="buttons">
+                <button class="btn cancel" id="cancel" name="cancel">CANCEL</button>
+                <button  class="btn send" id="send" name="send">SEND</button>
+            </div>
+        </section>
+    </div>
+
+    <section class="section" id="section-mode">
+        <main>
+
+            <section>
+                <div class="cards" id="cards"></div>
+            </section>
+
+        </main>
+    </section>
+
+
+    <script src="./js/script.js" defer></script>
+</body>
+</html> 

@@ -1,0 +1,557 @@
+:root
+{
+    --color-default-white: #fff;
+    --color-default-black: #000;
+    --color-default-gray: #9998986b;
+
+    --color-default-shadow: #21212150;
+    --color-darkmode: #212121;
+
+    --color-default-red: #b83535;
+    --color-default-green: #49c43e;
+    --color-dark-purple: #8e38c0;
+    --color-default-purple: #e149ff;
+    --color-default-blue: #7f7fea;
+}
+// Roboto Condensed
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+// Domine
+@import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
+
+*
+{
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+
+    HTML, body
+    {
+        width: 100vw;
+        height: 100vh;
+
+        display: grid;
+        grid-template-areas: 
+        "h h"
+        "m m";
+        grid-template-columns: 1fr;
+        grid-template-rows: 8vh 1fr;
+
+        overflow-x: hidden;
+        transition: .4s;
+
+        &.darkmode-body
+        {
+            background: none;
+            background-color: #212121;
+        }
+
+        &.body-animated
+        {
+            background: linear-gradient(-45deg, #52eeee, #E73C7E,#23A6D5, #23D5AB);
+            position: relative;
+            background-size: 400% 400%;
+            animation: background 10s ease-in-out infinite;
+        }
+            
+        header
+        {
+            grid-area: h;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            .navegation
+            {
+                width: 35px;
+                height: 40px;
+
+                top: 2%;
+                right: 2%;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+
+                position: fixed;
+
+                z-index: 1;
+
+                cursor: pointer;
+
+                .navegation-line1,
+                .navegation-line2,
+                .navegation-line3
+                {
+                    background: var(--color-default-blue);
+
+                    width: 100%;
+                    height: 6px;
+
+                    border-radius: 5px;
+                }
+            }
+
+            .nav
+            {
+                visibility: hidden;
+                opacity: 0;
+
+                top: 8%;
+                right: -10%;
+
+                background-color: transparent;
+                transition: all .6s ease;
+
+                & .show
+                {
+                    display: none;
+                }
+
+                &.activated
+                {
+                    visibility: visible;
+                    position: fixed;
+                    top: 8%;
+                    right: 4.5%;
+    
+                    height: 78%;
+                    width: 15rem;
+                    border-radius: 5px;
+                    border-top-right-radius: 0;
+                    padding: 1rem 0;
+
+                    opacity: 1;
+                    background-color: var(--color-default-blue);
+
+                    & .show
+                    {
+                        display:flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: space-between;
+                        text-align: center;
+
+                        width: 100%;
+                        height: 100%;
+                        
+                        
+                        .list-menu
+                        {
+                            margin: 1rem 0;
+                            visibility: visible;
+                        }
+                        
+                        & .list
+                        {
+                            list-style: none;
+                            visibility: visible;
+                            
+                            .link
+                            {
+                                color: var(--color-default-white);
+                                text-decoration: none;
+                                
+                                font: 300 13px 'Roboto Condensed';
+                                text-transform: uppercase;
+                                line-height: 2rem;
+                                visibility: visible;
+                            }
+                        }
+
+                        .change-to-dark
+                        {
+                            cursor: pointer;
+                        }
+
+                        .label-checkbox
+                        {
+                            font: 15px 'Roboto Condensed';
+                            margin: 1rem 0;
+                            color: white;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+
+                            input[type="checkbox"]
+                            {
+                                -webkit-appearance: none;
+                                visibility: hidden;
+                                display: none;
+                            }
+    
+                            .check
+                            {
+                                position: relative;
+                                display: block;
+                                cursor: pointer;
+                                overflow: hidden;
+                                
+                                width: 90px;
+                                height: 40px;
+    
+                                background: #092ce3;
+                                border-radius: 20px;
+    
+                                transition: ease-in .3s;
+                            }
+    
+                            input[type="checkbox"]:checked ~ .check
+                            {
+                                background: var(--color-default-black);
+                            }
+    
+                            .check:before
+                            {
+                                content: '';
+                                position: absolute;
+                                top: 2px;
+                                left: 2px;
+                                background: var(--color-default-white);
+                                width: 36px;
+                                height: 36px;
+                                border-radius: 50%;
+                                transition: .3s;
+                            }
+    
+                            input[type="checkbox"]:checked ~ .check::before
+                            {
+                                transform: translate(-50px);
+                                background-color: var(--color-default-blue);
+                            }
+    
+                            .check:after
+                            {
+                                content: '';
+                                position: absolute;
+                                top: 2px;
+                                left: 2px;
+                                background: #fff;
+                                width: 36px;
+                                height: 36px;
+                                border-radius: 50%;
+                                transition: .3s;
+                                transform: translate(100px);
+                            }
+    
+                            input[type="checkbox"]:checked ~ .check::after
+                            {
+                                transform: translate(50px);
+                                background-color: #092ce3;
+                            }
+                        }
+                    }
+                }
+            }
+        
+        }
+
+        .modal
+        {
+            opacity: 0;
+            transition: .5s;
+
+            .elements
+            {
+                display: none;
+            }
+
+            &.actived
+            {
+                opacity: 1;
+                z-index: 1;
+                background-color: var(--color-default-shadow);
+
+                width: 100vw;
+                height: 100vh;
+
+                position: fixed;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .elements
+                {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    background-color: var(--color-default-white);
+
+                    width: 30rem;
+                    padding: 1rem 1.6rem;
+                    border-radius: 8px;
+
+                    @media (max-width: 867px){
+                        &{
+                            width: calc(100% / 1.3);
+                        }
+                    }
+
+                    .image-container
+                    {
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-end;
+
+                        .close
+                        {
+                            position: relative;
+                            top: -10px;
+                            right: 5px;
+                            cursor: pointer;
+                        }
+                    }
+
+                    input
+                    {
+                        width: 100%;
+                        height: 1.8rem;
+                        margin: 0 0 .5rem;
+                        padding: 1rem .3rem;
+                        border: 1px solid var(--color-default-purple);
+
+                        border-radius: 5px;
+
+                        outline: none;
+                    }
+
+                    .textarea
+                    {
+                        width: 100%;
+                        margin: .5rem 0 0;
+                        padding: .5rem;
+                        border-radius: 5px;
+                        box-shadow: 1px 1px 2px var(--color-default-shadow);
+                        border: #8e38c0 1px solid;
+                        font: 300 15px sans-serif, Arial;
+
+                        resize: none;
+                        outline: none;
+                    }
+
+                    .buttons
+                    { 
+                        margin: .5rem 0 0;
+                        
+                        .btn
+                        {
+                            padding: .3rem 2rem;
+                            margin: 0 .3rem 0 ;
+                            border-radius: 4px;
+                            background-color: transparent;
+                            border: none;
+                            outline: none;
+
+                            &.cancel
+                            {
+                                color: var(--color-default-red);
+                                border: 1px solid var(--color-default-red);
+                            }
+
+                            &.send
+                            {
+                                color: var(--color-default-white);
+                                background-color: var(--color-default-green);
+                                border: 1px solid var(--color-default-green);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .section
+        {
+            main
+            {
+                grid-area: m;
+
+                transition: all .5s;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                width: 100vw;
+
+                .cards
+                {
+                    width: 40rem;
+                    text-align: center;
+
+                    @media (max-width: 867px){
+                        &{
+                            width: 100vw;
+
+                            display: flex;
+                            align-items: center;
+                            flex-direction: column;
+                        }
+                        .card{
+                        width: 70vw;
+                        height: 40vh;
+
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        }       
+                    }
+
+                    .card
+                    {
+                        border: 2px solid var(--color-default-purple);
+                        background: transparent;
+                        border-radius: 8px;
+        
+                        margin: 0 0 1rem;
+                        padding: 1rem .5rem;
+
+                        .row
+                        {
+                            transform: .5s;
+                            width: 100%;
+                            height: 1px;
+                            opacity: .5;
+                        }
+
+                        .date
+                        {
+                            color: var(--color-default-blue);
+                            font: bolder 15px Arial;
+                        }
+
+                        &:hover
+                        {
+                            transition: .3s;
+                            box-shadow: 1px 1px 6px var(--color-default-shadow);
+                        }
+
+                        &.darkmode
+                        {
+                            background-color: #21212170;
+                            
+                            .title{
+                                color: var(--color-default-white);
+                            }
+
+                            .description{
+                                color: var(--color-default-white);
+                            }
+
+                            &:hover
+                            {
+                                transition: .3s;
+                                box-shadow: 1px 1px 6px var(--color-dark-purple);
+                            }
+                        }
+                    }
+
+                    .div-title
+                    {
+                        width: 100%;
+
+                        .title
+                        {
+                            transition: .5s;
+                            color: var(--color-default-black);
+                            font: 400 25px 'Domine';
+                        }
+                    }
+
+
+                    .div-description
+                    {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        width: 100%;
+                        margin: 1rem 0 0;
+
+                        .description
+                        {
+                            transition: .5s;
+                            font: 400 17px 'Roboto Condensed';
+                        }
+                    }
+
+                    .image-container{
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-end;
+                        padding: 0 .5rem;
+
+                        .check-list
+                        {
+                            margin: 0 .2rem;
+
+                            cursor: pointer;
+
+                            &:hover
+                            {
+                                text-shadow: 0 0 2px var(--color-default-red);
+                            }
+                        }
+                    }
+                }
+
+
+            }
+        }
+
+        .section.darkmode
+        {
+            .cards
+            {
+                .card{
+
+                    background: var(--color-darkmode);
+
+                    .title
+                    {
+                        color: var(--color-default-white);
+                    }
+
+                    .description
+                    {
+                        color: var(--color-default-white);
+                    }
+                }
+            }
+        }
+    }
+    
+    ::-webkit-scrollbar{
+        transition: .4s;
+        background-color: transparent;
+        width: 9px;
+
+        &:active{
+            background-color: var(--color-default-gray);
+        }
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: var(--color-dark-purple);
+        border-radius: 8px;
+        margin: 0 5px 0;
+    }
+}
+
+@keyframes background {
+    0%{
+        background-position: 0 50%;
+    }
+
+    50%{
+        background-position: 100% 50%;
+    }
+
+    100%{
+        background-position: 0 50%;
+    }
+}
